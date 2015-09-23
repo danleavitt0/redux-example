@@ -11,8 +11,8 @@ module.exports = {
       test: /\.jsx?$/,
       exclude: /node_modules/,
       loader: 'react-hot!babel'
-    }],
-  }
+    }]
+  },
   resolve: {
     extensions: ['', '.js', '.jsx']
   },

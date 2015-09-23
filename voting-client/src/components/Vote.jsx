@@ -7,19 +7,19 @@ export default class Vote extends Component {
   isDisabled () {
     return !!this.props.hasVoted
   }
-  hasVotedFor () {
+  hasVotedFor (entry) {
     return this.props.hasVoted === entry
   }
   render () {
-    return <div className="voting">
+    return <div className='voting'>
       {this.getPair().map(entry =>
         <button key={entry}
                 disabled={this.isDisabled()}
                 onClick={() => this.props.vote(entry)}>
           <h1>{entry}</h1>
-          {this.hasVotedFor(entry) ?
-            <div className="label">Voted</div> :
-            null}
+          {this.hasVotedFor(entry)
+            ? <div className='label'>Voted</div>
+            : null}
         </button>
       )}
     </div>
@@ -27,6 +27,7 @@ export default class Vote extends Component {
 }
 
 Vote.propTypes = {
-  pair: PropTypes.array
-  hasVoted: PropTypes.string
+  pair: PropTypes.array,
+  hasVoted: PropTypes.string,
+  vote: PropTypes.function
 }
