@@ -2,6 +2,7 @@ import React, {Component, PropTypes} from 'react'
 import {connect} from 'react-redux'
 import Winner from './Winner'
 import Vote from './Vote'
+import * as actionCreators from '../action_creators'
 
 export default class Voting extends Component {
   render () {
@@ -25,4 +26,4 @@ Voting.propTypes = {
   winner: PropTypes.string
 }
 
-export const VotingContainer = connect(mapStateToProps)(Voting)
+export const VotingContainer = connect(mapStateToProps, actionCreators)(Voting)

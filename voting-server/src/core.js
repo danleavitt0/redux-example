@@ -12,16 +12,16 @@ function getWinners (vote) {
 
 export const INITIAL_STATE = Map()
 
-export function setEntries(state, entries) {
+export function setEntries (state, entries) {
   return state.set('entries', List(entries))
 }
 
-export function next(state) {
+export function next (state) {
   const entries = state.get('entries').concat(getWinners(state.get('vote')))
   if (entries.size === 1) {
     return state.remove('vote')
                 .remove('entries')
-                .set('winner', entries.first());
+                .set('winner', entries.first())
   } else {
     return state.merge({
       vote: Map({pair: entries.take(2)}),
@@ -30,7 +30,7 @@ export function next(state) {
   }
 }
 
-export function vote(voteState, entry) {
+export function vote (voteState, entry) {
   return voteState.updateIn(
     ['tally', entry],
     0,

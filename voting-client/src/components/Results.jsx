@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react'
 import {connect} from 'react-redux'
 import Winner from './Winner'
+import * as actionCreators from '../action_creators'
 
 export default class Results extends Component {
   getPair () {
@@ -13,6 +14,7 @@ export default class Results extends Component {
     return 0
   }
   render () {
+    console.log(this.props)
     return this.props.winner
     ? <Winner ref='winner' winner={this.props.winner}/>
     : <div className='results'>
@@ -52,4 +54,7 @@ function mapStateToProps (state) {
   }
 }
 
-export const ResultsContainer = connect(mapStateToProps)(Results)
+export const ResultsContainer = connect(
+  mapStateToProps,
+  actionCreators
+)(Results)
