@@ -4,16 +4,21 @@ import {createStore, applyMiddleware} from 'redux'
 import {Provider} from 'react-redux'
 import io from 'socket.io-client'
 import reducer from './reducer'
-import {setState} from './action_creators'
+import {setState, clear} from './action_creators'
 import remoteActionMiddleware from './remote_action_middleware'
 import App from './components/App'
 import {VotingContainer} from './components/Voting'
 import {ResultsContainer} from './components/Results'
 
 const socket = io(`${location.protocol}//${location.hostname}:8090`)
-socket.on('state', state =>
-  store.dispatch(setState(state))
-)
+socket.on('state', state => {
+  console.log(state)
+  return store.dispatch(setState(state))
+})
+socket.on('reset', state => {
+  console.log('reset')
+  return store.dispatch(clear())
+})
 
 const createStoreWithMiddleware = applyMiddleware(
   remoteActionMiddleware(socket)

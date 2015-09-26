@@ -28,6 +28,5 @@ export default class Vote extends Component {
 
 Vote.propTypes = {
   pair: PropTypes.array,
-  hasVoted: PropTypes.string,
-  vote: PropTypes.function
+  hasVoted: PropTypes.string
 }

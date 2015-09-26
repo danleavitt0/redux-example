@@ -19,3 +19,16 @@ export function next () {
     type: 'NEXT'
   }
 }
+
+export function reset () {
+  return {
+    meta: {remote: true},
+    type: 'RESET'
+  }
+}
+
+export function clear () {
+  return {
+    type: 'RESET'
+  }
+}

@@ -1,17 +1,22 @@
-import React, {PropTypes, Component} from 'react'
+import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import * as actionCreators from '../action_creators'
 
 export default class Reset extends Component {
+
   render () {
-    <div onClick={() => this.props.reset()}>Reset</div>
+    let {reset} = this.props
+    return <button onClick={() => reset()}>Reset</button>
   }
 }
 
-Reset.propTypes = {
-  reset: PropTypes.function
+function mapStateToProps (state) {
+  return {
+    winner: state.get('winner')
+  }
 }
 
 export const ResetContainer = connect(
+  mapStateToProps,
   actionCreators
 )(Reset)

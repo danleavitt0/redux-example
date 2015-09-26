@@ -4,7 +4,6 @@ import {expect} from 'chai'
 import reducer from '../src/reducer'
 
 describe('reducer', () => {
-
   it('has an initial state', () => {
     const action = {type: 'SET_ENTRIES', entries: ['Trainspotting']}
     const nextState = reducer(undefined, action)
@@ -57,6 +56,24 @@ describe('reducer', () => {
     }))
   })
 
+  it('handles RESET', () => {
+    const initialState = fromJS({
+      entries: [],
+      winner: 'Trainspotting'
+    })
+    const action = {type: 'RESET'}
+    const nextState = reducer(initialState, action)
+    console.log(nextState)
+    expect(nextState).to.equal(fromJS({
+      entries: [
+        'A Life Less Ordinary'
+      ],
+      vote: {
+        pair: ['Shallow Grave', 'Trainspotting']
+      }
+    }))
+  })
+
   it('can be used with reduce', () => {
     const actions = [
       {type: 'SET_ENTRIES', entries: ['Trainspotting', '28 Days Later']},
@@ -72,5 +89,4 @@ describe('reducer', () => {
       winner: 'Trainspotting'
     }))
   })
-
 })

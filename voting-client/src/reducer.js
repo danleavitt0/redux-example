@@ -27,6 +27,9 @@ export default function (state = Map(), action) {
       return resetVote(setState(state, action.state))
     case 'VOTE':
       return vote(state, action.entry)
+    case 'RESET':
+      return state.remove('winner')
+                  .remove('hasVoted')
   }
   return state
 }

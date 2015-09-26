@@ -14,7 +14,6 @@ export default class Results extends Component {
     return 0
   }
   render () {
-    console.log(this.props)
     return this.props.winner
     ? <Winner ref='winner' winner={this.props.winner}/>
     : <div className='results'>
@@ -42,7 +41,6 @@ export default class Results extends Component {
 Results.propTypes = {
   pair: PropTypes.object,
   tally: PropTypes.object,
-  next: PropTypes.function,
   winner: PropTypes.string
 }
 

@@ -37,3 +37,7 @@ export function vote (voteState, entry) {
     tally => tally + 1
   )
 }
+
+export function reset (state, entries) {
+  return next(setEntries(state, entries).remove('winner').remove('vote'))
+}

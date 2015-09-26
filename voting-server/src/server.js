@@ -9,6 +9,10 @@ export function startServer (store) {
 
   io.on('connection', (socket) => {
     socket.emit('state', store.getState().toJS())
-    socket.on('action', store.dispatch.bind(store))
+    socket.emit('reset')
+    socket.on('action', (action) => {
+      if (action.type === 'RESET') { io.emit('reset', store.getState().toJS()) }
+      store.dispatch.bind(store, action)()
+    })
   })
 }

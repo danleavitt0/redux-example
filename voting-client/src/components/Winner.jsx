@@ -1,4 +1,5 @@
 import React, {PropTypes, Component} from 'react'
+import {ResetContainer} from './Reset'
 
 export default class Winner extends Component {
   render () {
@@ -6,6 +7,7 @@ export default class Winner extends Component {
     return (
       <div className='winner'>
         Winner is {winner}
+        <ResetContainer/>
       </div>
     )
   }
